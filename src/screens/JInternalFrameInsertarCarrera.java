@@ -40,7 +40,7 @@ public class JInternalFrameInsertarCarrera extends JInternalFrame{
         btnCancelar = new JButton("Cancelar");
 
         // Etiquetas
-        lblId.setFont(new Font("Tahoma", 0, 14));
+        lblId.setFont(new Font("Tahoma", Font.BOLD, 16));
         lblNombreCarrera.setFont(new Font("Tahoma", Font.BOLD, 16));
         lblMonto.setFont(new Font("Tahoma", Font.BOLD, 16));
         //Botones 

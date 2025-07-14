@@ -68,8 +68,13 @@ public class VentanaPrincipal extends JFrame{
     }
 
     private void jmiInsertarCarreras(){
+        //  Crear un objeto de tipo JInternalFrame 
         JInternalFrameInsertarCarrera insertarCarrera = new JInternalFrameInsertarCarrera();
+
+        // Agregat el internalFrame al escritorio
         this.desktop.add(insertarCarrera);
+
+        //  Le digo que se muestre el internalFrame
         insertarCarrera.setVisible(true);
     }
 
