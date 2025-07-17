@@ -1,8 +1,18 @@
-
+import java.sql.Connection;
+import java.sql.SQLException;
+import models.Conexion;
 import screens.VentanaPrincipal;
 
 public class App {
     public static void main(String[] args) throws Exception {
+
+        try{
+            Connection conn = Conexion.conectar();{
+                System.out.println("Conexion exitosa a la BD");
+            }
+        } catch (SQLException e){
+            System.out.println("Error en conxion a la BD" + e.getMessage());
+        }
         
         //  Solo para asegurar que la apariencia sea consistente ed windows
         try {
