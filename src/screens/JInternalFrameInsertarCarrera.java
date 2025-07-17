@@ -1,6 +1,7 @@
 package screens;
 
 import java.awt.Font;
+import java.sql.Connection;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
@@ -16,13 +17,15 @@ public class JInternalFrameInsertarCarrera extends JInternalFrame{
     private JTextField txtMonto;
     private JButton btnAceptar;
     private JButton btnCancelar;
+    private Connection conn;
 
-    public JInternalFrameInsertarCarrera(){
+    public JInternalFrameInsertarCarrera(Connection conn){
         super("Insertar carrera", 
               true,  // resizable
               true,  // closable
               true,  // maximizable
               true); // iconifiable (minimizable)
+        this.conn = conn;
         this.setTitle("Insertar nueva carrera");
         this.setSize(400,400);
         initComponents();
@@ -47,6 +50,8 @@ public class JInternalFrameInsertarCarrera extends JInternalFrame{
         btnAceptar.setFont(new Font("Tahoma", Font.BOLD, 16));
         btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 16));
 
+
+        btnAceptar.addActionListener(e -> insertarCarrera());
         btnCancelar.addActionListener(e -> this.dispose());
 
         GroupLayout layout = new GroupLayout(getContentPane());

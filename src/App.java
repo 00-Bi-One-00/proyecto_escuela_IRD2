@@ -5,9 +5,9 @@ import screens.VentanaPrincipal;
 
 public class App {
     public static void main(String[] args) throws Exception {
-
+        Connection conn = null;
         try{
-            Connection conn = Conexion.conectar();{
+            conn = Conexion.conectar();{
                 System.out.println("Conexion exitosa a la BD");
             }
         } catch (SQLException e){
@@ -25,7 +25,7 @@ public class App {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal("Proyecto Escuela");
+        VentanaPrincipal ventanaPrincipal = new VentanaPrincipal("Proyecto Escuela", conn);
         ventanaPrincipal.setSize(500,500);
         ventanaPrincipal.setVisible(true);
     }
