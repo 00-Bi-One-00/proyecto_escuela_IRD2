@@ -1,3 +1,4 @@
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import models.Conexion;
@@ -23,7 +24,7 @@ public class App {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Error al establecer look and fell; " + e.getMessage());
         }
         VentanaPrincipal ventanaPrincipal = new VentanaPrincipal("Proyecto Escuela", conn);
         ventanaPrincipal.setSize(500,500);

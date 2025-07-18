@@ -6,7 +6,10 @@ import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import models.Carrera;
+import models.CarreraDAO;
 
 public class JInternalFrameInsertarCarrera extends JInternalFrame{
     private JLabel lblId;
@@ -90,7 +93,53 @@ public class JInternalFrameInsertarCarrera extends JInternalFrame{
                 )
         );
     }
-    
+
+    private void  insertarCarrera(){
+        int rows;
+        
+        //  Recuperar datos de las cajas de texto
+        int id = Integer.parseInt(txtId.getText());
+        String Nombre = txtNombreCarrera.getText();
+        double monto = Double.parseDouble(txtMonto.getText());
+
+        //  Revisar que los campos no esten vacios
+        if (id <= 0 || Nombre.isEmpty() || monto <= 0){
+            JOptionPane.showMessageDialog(this,
+                "Por favor, complete todos los campos correctamente",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else{
+            //  3. Craer un objeto Carrera
+            Carrera carrera = new Carrera(id, Nombre, monto);
+
+            //  4.Craer un objeto CarreraDAO
+            CarreraDAO carreraDAO =  new CarreraDAO(this.conn);
+
+            //  5. Insertar la carrera en la base de datos
+            rows = carreraDAO.insertarCarrera(carrera);
+
+            if (rows > 0) {
+                JOptionPane.showMessageDialog(this, 
+                    "Carrera insertada correctamente. ",
+                    "Exito",
+                    JOptionPane.INFORMATION_MESSAGE);
+                txtId.setText("");
+                txtNombreCarrera.setText("");
+                txtMonto.setText("");
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this, 
+                    "Error al insertar la carrera.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+
+    }
+
 }
 
 

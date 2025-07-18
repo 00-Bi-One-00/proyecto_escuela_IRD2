@@ -1,9 +1,8 @@
-package screens;
+package models;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import models.Carrera;
 
 //  CarreraDAO: contiene todos los metodos para interactuar con la tabla carreras 
 //  como insertar, select, update y delate
@@ -21,8 +20,8 @@ public class CarreraDAO {
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setInt(1, carrera.getId());
-            stmt.setString(1, carrera.getNombre());
-            stmt.setDouble(1, carrera.getMonto());
+            stmt.setString(2, carrera.getNombre());
+            stmt.setDouble(3, carrera.getMonto());
             rows = stmt.executeUpdate();
         } catch (SQLException e){
             System.out.println("Error al insertar carrera: " + e.getMessage());

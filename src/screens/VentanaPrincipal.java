@@ -16,6 +16,7 @@ public class VentanaPrincipal extends JFrame{
     private JMenuItem jMenuItemVerAlumnos;
     private JMenuItem jMenuItemInsertarCarreras;
     private JMenuItem jMenuItemVerCarreras;
+    
     private Connection conn;
 
     public VentanaPrincipal(String title, Connection conn){
